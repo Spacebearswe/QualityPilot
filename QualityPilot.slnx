@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/QualityPilot.Api/QualityPilot.Api.csproj" />
+    <Project Path="src/QualityPilot.Application/QualityPilot.Application.csproj" />
+    <Project Path="src/QualityPilot.Domain/QualityPilot.Domain.csproj" />
+    <Project Path="src/QualityPilot.Infrastructure/QualityPilot.Infrastructure.csproj" />
+  </Folder>
+</Solution>

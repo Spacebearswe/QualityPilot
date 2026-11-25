@@ -1,0 +1,30 @@
+name: CI
+
+# Runs on every pull request, and is reused by deploy.yml before each deploy.
+# It does exactly what `npm run check` does on your own computer.
+on:
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    # This name is what shows up as a "status check" on the pull request.
+    # It is also the name to select in the branch rules (docs/BRANCH_PROTECTION.md).
+    name: Lint, test and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm run test:run
+      - run: npm run build

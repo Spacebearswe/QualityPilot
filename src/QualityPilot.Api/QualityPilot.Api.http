@@ -1,0 +1,6 @@
+@QualityPilot_HostAddress = http://localhost:5063
+
+GET {{QualityPilot_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

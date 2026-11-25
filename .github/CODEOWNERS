@@ -1,0 +1,10 @@
+# Code owners are asked to review every pull request that touches "their" files.
+# With the rule "Require review from Code Owners" turned on (see
+# docs/BRANCH_PROTECTION.md) a pull request can NOT be merged until one of the
+# owners listed on the matching line has approved it.
+#
+# The format is: <file pattern> <one or more GitHub usernames>
+#
+# Tip: list two people on the line below so that each can approve the other's
+# pull requests, because nobody can approve their own pull request.
+* @Spacebearswe
