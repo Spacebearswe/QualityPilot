@@ -1,9 +1,5 @@
 # QualityPilot
 
-![CampusEats shown on desktop, tablet and mobile](docs/images/amiresponsive.png)
-
-[![CI](https://github.com/NiclO1337/campus-eats/actions/workflows/ci.yml/badge.svg)](https://github.com/NiclO1337/campus-eats/actions/workflows/ci.yml)
-
 **Product quality and envritoment control
 Keeps your product development controlled with the enviroment in mind. 
 
@@ -36,7 +32,7 @@ Edit the link
 
 ## About the project
 
-ControlPilot lets companies to track a projects products and enforce quality
+QualityPilot lets companies to track a projects products and enforce quality
 and environment approvals to them.  
 
 ### Team
@@ -61,12 +57,12 @@ Stefan.
 - Simple to use
 - Enforces fulfillment that only can be granted of users with the right xxx
 - Products can be exported and imported between systems
-- xxxxFind answers in the FAQ and read the terms and privacy information
+- Fix this!!   Find answers in the FAQ and read the terms and privacy information
 
 #### Project goals
 
 - Build a small, working, well-tested app instead of a big unfinished one
-- Keep the code understandable for beginners
+- Keep the code understandable and easy to read
 - Make the site accessible and usable on mobile and desktop
 
 ## Design
@@ -97,6 +93,7 @@ Shared colours, typography and component styles are defined in
 - Fonts are loaded through Google Fonts in `index.html`.
 
 #### Colours
+--Fix colors!!!
 
 | Purpose                                       | Hex colour |
 | --------------------------------------------- | ---------- |
@@ -133,20 +130,6 @@ Shared colours, typography and component styles are defined in
 
 | Feature                                                                       | Status                                  |
 | ----------------------------------------------------------------------------- | --------------------------------------- |
----| Home page with a map of the restaurants around the university                 | Implemented (see `docs/MAP.md`)         |
-| Restaurants page with name search, dietary filters and restaurant details     | Implemented (`RestaurantCard`)          |
-| Opening hours per weekday, with an "Open / Closed" label                      | Implemented (data in `restaurants.ts`)  |
-| Order popup (meal, drink, add-ons, sides, menu link)                          | Implemented (reusable `Modal`)          |
-| FAQ page                                                                      | Implemented (`src/data/faq.ts`)         |
-| Information pages (About Us, Terms, Privacy, Cookies, Contact, Accessibility) | Implemented (`src/data/infoPages/`)     |
-| Checkout with student discount, delivery or pickup, estimated time            | Implemented (`CheckoutForm`)            |
-| Cart: add meals, drinks, add-ons and sides, review and change the order       | Implemented (`CartDrawer`)              |
-| Payment with Swish                                                            | Implemented (demo, no real payment)     |
-| Login (reuses the `Modal`)                                                    | Implemented (demo, see `docs/LOGIN.md`) |
-
-The six information pages (About Us, Terms & Conditions, Privacy Policy,
-Cookies & Storage, Contact and Accessibility) describe the current school-project
-demo and distinguish simulated features from planned real services.
 
 # Technologies used
 
@@ -154,49 +137,47 @@ demo and distinguish simulated features from planned real services.
 
 - [React](https://react.dev/) 19 and [TypeScript](https://www.typescriptlang.org/) (strict), built with [Vite](https://vite.dev/)
 - [Material UI](https://mui.com/material-ui/) (MUI) for components, with a small theme in `src/theme/theme.ts`
-- [React Router](https://reactrouter.com/) with `HashRouter` (works on GitHub Pages)
-- [MapLibre](https://maplibre.org/) and [OpenFreeMap](https://openfreemap.org/) for the map (free, no API key), through `@vis.gl/react-maplibre`
+- [React Router](https://reactrouter.com/) with (works on Azure)
 - [Vitest](https://vitest.dev/) and [Testing Library](https://testing-library.com/) for tests
 - [oxlint](https://oxc.rs/docs/guide/usage/linter) for linting and [Prettier](https://prettier.io/) for formatting
-- GitHub Actions and GitHub Pages for CI/CD
+- GitHub Actions and GitHub Pages for CI/CD to Azure
 
 ## Backend
 
 - C# 14
 - .NET 10
 - Entity framework, EF Core 11.0
--Comunicates with fronted with an minimal API
+- Comunicates with fronted with an minimal API
 - Solution follows the Clean Code principle
 
 
 
 ```
-/ControlPilot.sln
+/QualityPilot.sln
 /src
 ├── ControlPilot.Domain/               # Layer 1: Entities
 │   ├── Entities/                      # Product.cs, UseApproval.cs
 │   ├── ValueObjects/                  # Money.cs, Address.cs Not used here yet 
 │   └── Exceptions/                    # DomainException.cs
-│   ├── Interfaces/                    # IProductRepository.cs
 │
 ├── ControlPilot.Application/          # Layer 2: Use Cases (Refs Domain)
-│   ├── UseCases/                      # ex ApplyDiscountCommand.cs not used yet
+│   ├── UseCases/                      # ex ApplyDiscountCommand.cs Not used yet
 │   ├── DTOs/                          # Request/Response records
 │   └── DependencyInjection.cs         # AddApplication() extension
 │
 ├── ControlPilot.Infrastructure/       # Layer 3: Adapters (Refs App+Domain)
 │   ├── Persistence/                   # AppDbContext, Repositories
-│   ├── Messaging/                     # Kafka/ServiceBus publishers
+│   ├── Repositories/                  # Repository Pattern
 │   ├── Migrations/                    # Entity framework Migrations
+│   ├── Interfaces/                    # IProductRepository.cs
 │   └── DependencyInjection.cs         # AddInfrastructure() extension
 │
 └── ControlPilot.WebAPI/               # Layer 4: Frameworks (Refs App+Infra)
     ├── Endpoints/                     # ProductEndpoints.cs
-    ├── Requests/                      # CreateProductRequest.cs
-    ├── Middleware/                    # Global Exception Handler
     └── Program.cs                     # The Composition Root
 ````
 
+Not implemented yet!!!
 To create thumbnails we use an Azure-friendly OSS approach:
 •	PDF: PDFium first-page to PNG
 •	TXT: SkiaSharp text preview thumbnail
@@ -210,16 +191,36 @@ You need **Node.js 24 LTS** (see `.nvmrc`; Node 22.22 or newer also works) and G
 Check with `node -v`.
 
 ```bash
-git clone -----https://github.com/NiclO1337/campus-eats.git
-cd campus-eats
+git clone -----https://github.com/Spacebearswe/qualitypilot.git
+cd quality-pilot/frontend
 npm install
-npm run dev
+This frontednd are made for AZURE, do not use: npm run dev
 ```
 
 Open the address that `npm run dev` prints (normally <http://localhost:5173>).
 
 All the other commands (tests, lint, build, ...) are listed in
 [`CONTRIBUTING.md`](CONTRIBUTING.md#commands).
+
+### Debug localy
+
+Start the API first, in a terminal:
+
+```bash
+cd C:\Users\User\source\repos\QualityPilot
+dotnet run --project src\QualityPilot.Api --launch-profile http
+```
+
+Leave it running and check for Now listening on: http://localhost:5063. Then, in a second terminal, restart the frontend:
+
+```bash
+cd C:\Users\User\source\repos\QualityPilot\frontend
+npm run swa
+```
+
+Open http://localhost:4280 to show the frontend
+
+
 
 ## Backend
 
@@ -230,37 +231,14 @@ independent of a Part's attachments.
 
 Product operations:
 
-| Method | Route | Behavior |
-| --- | --- | --- |
-| GET | `/products/`, `/products/{id}` | List or retrieve products with their parts. |
-| POST | `/products/` | Create a product from `Name`, `Description`, `Manufacturer`, `Designation`, and `ApplicationDate`. |
-| PUT | `/products/{id}` | Update those product fields. |
-| POST | `/products/{id}/parts/{partId}` | Associate an existing part; duplicates return 409. |
-| DELETE | `/products/{id}` | Delete the product and keep its parts. |
-| DELETE | `/products/{id}/with-parts` | Delete the product and its unshared parts; keep shared parts. |
-| DELETE | `/products/{id}/parts/{partId}` | Remove the association and keep the part. |
-| DELETE | `/products/{id}/parts/{partId}/with-part` | Remove the association and delete the part only if it is not shared. |
+| Method | Route                           | Behavior                                                                                           |
+| ------ | ------------------------------- | -------------------------------------------------------------------------------------------------- |
+| GET    | `/products/`, `/products/{id}`  | List or retrieve products with their parts.                                                        |
+| POST   | `/products/`                    | Create a product from `Name`, `Description`, `Manufacturer`, `Designation`, and `ApplicationDate`. |
+| PUT    | `/products/{id}`                | Update those product fields.                                                                       |
+| POST   | `/products/{id}/parts/{partId}` | Associate an existing part; duplicates return 409.                                                 |
+| DELETE | `/products/{id}`                | Delete the product and keep its parts.                                                             |
 
-Deleting a shared part returns 409. `DELETE /parts/{id}` also returns 409 when
-any product uses the part. Missing products, parts, or associations return 404.
-When a part is deleted, its approvals are deleted and its pictures and documents
-are retained without a part association, following the existing Part rules.
-
-Product-owned approvals can be listed or created at `/products/{id}/approvals`;
-individual approvals can be retrieved at `/products/{id}/approvals/{approvalId}`.
-Product pictures and documents have corresponding list and item routes under
-`/products/{id}/pictures` and `/products/{id}/documents`, plus `/content` and
-`/thumbnail` item routes. Upload pictures or documents to their respective
-`/upload-base64` or `/upload-multipart` routes. Deleting a product also deletes
-its own approvals, pictures and documents, including their blobs; Part-owned
-attachments are not Product-owned attachments. Product multipart uploads do not
-use antiforgery tokens because the API currently has no cookie authentication;
-add CSRF protection before introducing cookie-based authentication.
-
-The initial EF Core migration creates the `Parts` table and related tables.
-The design-time context targets the SQL Server configured in
-`DesignTimeDbContextFactory`; verify that target before applying migrations.
-From the solution root in PowerShell:
 
 ```powershell
 dotnet build
@@ -274,40 +252,6 @@ dotnet ef migrations add MigrationName --project src\ControlPilot.Infrastructure
 ```
 
 
-## Testing
-
-The Product repository SQL Server integration test runs only when
-`CONTROLPILOT_SQL_TEST_CONNECTION` is set. Use a test SQL Server account with
-permission to create and drop databases. The test creates a uniquely named
-`ControlPilot_ProductTests_...` database, applies migrations and deletes that
-specific database afterward. For example:
-
- added a React + Vite + TypeScript frontend in frontend\, set up for local Static Web Apps development. I started the API and swa start together. http://localhost:4280 returned 200 and /api/products returned 200 through the proxy. I didn't try adding or deleting a product in the browser, and nothing is deployed to Azure yet.
-What I added
-•	Products page: src\App.tsx and src\api.ts list, add and delete products. They call /api/products on the same origin, so no CORS is needed.
-•	SWA config: frontend\swa-cli.config.json runs the Vite dev server and proxies /api to the API on localhost:5063. public\staticwebapp.config.json adds the single-page-app fallback to index.html.
-•	CLI: @azure/static-web-apps-cli is installed as a dev dependency.
-•	Vite proxy: /api is also proxied in vite.config.ts, so plain npm run dev works too.
-•	API routes: these now start with /api/products, so local and Azure behave the same.
-
-Run it locally
-1.	Start the API with the http profile, which listens on port 5063.
-2.	In frontend\, run npm run swa.
-3.	Open http://localhost:4280.
-Before the products work: the database must exist. I haven't created the initial migration yet; the dotnet ef commands are in my earlier message.
-
-Deploying to Azure
-•	Frontend: create an Azure Static Web App. The app location is frontend, the output location is dist, and the build is npm run build. The GitHub Actions workflow it generates handles deployment.
-•	Backend: deploy the ASP.NET API separately, for example to App Service. Then link it to the Static Web App as its backend so /api works in production. Linking needs the Standard plan.
-I could not use the file tool to create App.tsx, so I wrote that one file through PowerShell.
-
-
-```powershell
-$env:CONTROLPILOT_SQL_TEST_CONNECTION = 'Server=localhost;Database=master;Trusted_Connection=True;TrustServerCertificate=True;'
-dotnet test src\ControlPilot.Tests\ControlPilot.Tests.csproj
-```
-
-Without the variable, that test is reported as skipped.
 
 ## Frontend
 

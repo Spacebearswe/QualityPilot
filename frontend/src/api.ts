@@ -25,5 +25,7 @@ export const productsApi = {
   list: () => request<Product[]>('/products'),
   create: (details: ProductDetails) =>
     request<Product>('/products', { method: 'POST', body: JSON.stringify(details) }),
+  update: (id: number, details: ProductDetails) =>
+    request<void>(`/products/${id}`, { method: 'PUT', body: JSON.stringify(details) }),
   remove: (id: number) => request<void>(`/products/${id}`, { method: 'DELETE' }),
 }
