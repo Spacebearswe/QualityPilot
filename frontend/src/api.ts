@@ -9,8 +9,11 @@ export interface Product {
 
 export type ProductDetails = Omit<Product, 'id'>
 
+const apiOrigin = import.meta.env.VITE_API_ORIGIN ?? ''
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(`/api${path}`, {
+  // const response = await fetch(`/api${path}`, {
+  const response = await fetch(`${apiOrigin}/api${path}`, {
     headers: { 'Content-Type': 'application/json' },
     ...init,
   })
